@@ -20,8 +20,43 @@ class CartItem extends StatelessWidget {
       subtitle: Text('Size : ${item['size']}'),
       trailing: IconButton(
           onPressed: () {
-            Provider.of<AppData>(context, listen: false)
-                .removeProductsFromCart(item);
+            showDialog(
+                // barrierDismissible: false,
+                context: context,
+                builder: (context) {
+                  return AlertDialog(
+                    title: const Text(
+                      "Delete Product",
+                      style: TextStyle(fontSize: 20),
+                    ),
+                    content: const Text(
+                        "Are you sure you want to delete the item  from the cart?"),
+                    actions: [
+                      TextButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text(
+                          "No",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.blue),
+                        ),
+                      ),
+                      TextButton(
+                        onPressed: () {
+                          Provider.of<AppData>(context, listen: false)
+                              .removeProductsFromCart(item);
+                          Navigator.of(context).pop();
+                        },
+                        child: const Text(
+                          "Yes",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.red),
+                        ),
+                      ),
+                    ],
+                  );
+                });
           },
           icon: const Icon(
             Icons.delete,
