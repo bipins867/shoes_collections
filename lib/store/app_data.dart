@@ -3,9 +3,7 @@ import 'package:flutter/material.dart';
 class AppData extends ChangeNotifier {
   var selectedTab = 0;
   var selectedProductSize = -1;
-
   final List<String> navList = const ['All', 'Adidas', 'Nike', 'Bata'];
-
   final globalProducts = [
     {
       'id': '0',

@@ -3,8 +3,7 @@ import 'package:provider/provider.dart';
 import 'package:shoes_collections/store/app_data.dart';
 
 class NavigationTabList extends StatefulWidget {
-  final List<String> navList;
-  const NavigationTabList({super.key, required this.navList});
+  const NavigationTabList({super.key});
 
   @override
   State<NavigationTabList> createState() => _NavigationTabListState();
@@ -18,7 +17,7 @@ class _NavigationTabListState extends State<NavigationTabList> {
     return SizedBox(
       height: 120,
       child: ListView.builder(
-        itemCount: widget.navList.length,
+        itemCount: appData.navList.length,
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, items) {
           return Padding(
@@ -30,7 +29,7 @@ class _NavigationTabListState extends State<NavigationTabList> {
                 });
               },
               child: Chip(
-                label: Text(widget.navList[items]),
+                label: Text(appData.navList[items]),
                 padding: const EdgeInsets.all(10),
                 backgroundColor: appData.selectedTab == items
                     ? const Color.fromARGB(255, 255, 236, 180)

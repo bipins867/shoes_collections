@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:shoes_collections/Navigations/shoe_page.dart';
+import 'package:shoes_collections/Navigations/ShoePage/shoe_page.dart';
+
 import 'package:shoes_collections/store/app_data.dart';
 
 class NavigationLists extends StatelessWidget {
@@ -25,11 +26,13 @@ class NavigationLists extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.all(10),
               margin: const EdgeInsets.all(20),
-              decoration: const BoxDecoration(
-                borderRadius: BorderRadius.all(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(
                   Radius.circular(20),
                 ),
-                color: Color.fromRGBO(216, 240, 253, 1),
+                color: items % 2 == 0
+                    ? const Color.fromRGBO(216, 240, 253, 1)
+                    : const Color.fromARGB(255, 255, 255, 255),
               ),
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

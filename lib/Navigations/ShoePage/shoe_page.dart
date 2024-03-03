@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:shoes_collections/Navigations/shoe_sizes.dart';
+import 'package:shoes_collections/Navigations/ShoePage/shoe_sizes.dart';
 
 class ShoePage extends StatelessWidget {
-  final product;
+  final Map<String, dynamic> product;
   const ShoePage({super.key, required this.product});
 
   @override

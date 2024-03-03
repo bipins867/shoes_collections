@@ -1,26 +1,43 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:shoes_collections/Header/header.dart';
-import 'package:shoes_collections/NavigationLists/navigation_lists.dart';
-import 'package:shoes_collections/NavigationTabs/navigation_tab_lists.dart';
-import 'package:shoes_collections/store/app_data.dart';
+import 'package:shoes_collections/Navigations/CartPage/cart_page.dart';
+import 'package:shoes_collections/Navigations/HomePage/home_page.dart';
 
-class MyHome extends StatelessWidget {
+class MyHome extends StatefulWidget {
   const MyHome({super.key});
 
   @override
+  State<MyHome> createState() => _MyHomeState();
+}
+
+class _MyHomeState extends State<MyHome> {
+  var currentIndex = 0;
+
+  List<Widget> pages = [const HomePage(), const CartPage()];
+
+  @override
   Widget build(BuildContext context) {
-    var appData = Provider.of<AppData>(context);
-    var navList = appData.navList;
     return Scaffold(
-      body: SafeArea(
-        child: Column(
-          children: [
-            const MyHeaders(),
-            NavigationTabList(navList: navList),
-            const NavigationLists(),
-          ],
-        ),
+      body: IndexedStack(index: currentIndex, children: pages),
+      bottomNavigationBar: BottomNavigationBar(
+        selectedFontSize: 0,
+        unselectedFontSize: 0,
+        iconSize: 35,
+        onTap: (value) {
+          setState(() {
+            currentIndex = value;
+          });
+        },
+        currentIndex: currentIndex,
+        items: const [
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: '',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.shopping_cart),
+            label: '',
+          ),
+        ],
       ),
     );
   }
