@@ -19,6 +19,7 @@ class NavigationLists extends StatelessWidget {
 
           return GestureDetector(
             onTap: () {
+              appData.selectedProductSize = -1;
               Navigator.of(context).push(MaterialPageRoute(builder: (context) {
                 return ShoePage(product: currentProduct);
               }));

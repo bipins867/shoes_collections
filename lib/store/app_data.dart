@@ -38,4 +38,16 @@ class AppData extends ChangeNotifier {
       'sizes': [8, 9, 10],
     },
   ];
+
+  final List<Map<String, dynamic>> cartList = [];
+
+  addProductsToCart(product) {
+    cartList.add(product);
+    notifyListeners();
+  }
+
+  removeProductsFromCart(product) {
+    cartList.remove(product);
+    notifyListeners();
+  }
 }
